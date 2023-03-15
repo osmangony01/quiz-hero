@@ -58,7 +58,7 @@ const displayQuiz = (data) => {
     quizContainer.innerHTML = "";
     return;
   }
-
+  quizContainer.innerHTML = "";
   data.forEach((quiz, i) => {
     quizContainer.innerHTML += `
     <div class="m-3 py-3 px-4 shadow-sm rounded">
@@ -77,7 +77,7 @@ const displayQuiz = (data) => {
 
 // EventListener for quiz submit button
 document.querySelector("#submit").addEventListener("click", () => {
-  console.log('submit');
+  //console.log('submit');
   if (answers.length < 6) {
     return;
   }
@@ -112,7 +112,7 @@ document.querySelector("#submit").addEventListener("click", () => {
   }
 
   // data setting on local storage and getting data from local storage
-  let storage = JSON.parse(localStorage.getItem("result"));
+  let storage = JSON.parse(localStorage.getItem("results"));
   if (storage) {
     localStorage.setItem(
       "results",
@@ -122,10 +122,11 @@ document.querySelector("#submit").addEventListener("click", () => {
           marks: totalMark,
           examTime: timeTaken.innerText,
           status: grade.status,
-        },
+        }
       ])
     );
-  } else {
+  } 
+  else{
     localStorage.setItem(
       "results",
       JSON.stringify([
@@ -133,7 +134,7 @@ document.querySelector("#submit").addEventListener("click", () => {
           marks: totalMark,
           examTime: timeTaken.innerText,
           status: grade.status,
-        },
+        }
       ])
     );
   }
@@ -141,48 +142,48 @@ document.querySelector("#submit").addEventListener("click", () => {
   // Right side bar/ answer section
   let x = setTimeout(() => {
     showAnswers(answers);
-    displayResult.innerHTML = `<div
-    class="h-[220px] w-[220px] mx-auto mt-8 flex flex-col justify-center border-2 rounded-tr-[50%] rounded-bl-[50%]"
-  >
-    <h3 class="text-xl ${grade.color}">${grade.status}</h3>
-    <h1 class="text-3xl font-bold my-2">
-      ${totalMark}<span class="text-slate-800">/60</span>
-    </h1>
-    <p class="text-sm flex justify-center items-center gap-2">
-      Total Time: <span class="text-xl text-orange-500">${timeTaken.innerText.replace(
-      "sec",
-      ""
-    )}<span class="text-xs">sec</span></span>
-    </p>
-  </div>
-  
-  <button onclick="location.reload();" class="bg-green-600 text-white w-full py-2 rounded mt-16">Restart</button>
-  ${storage
-        ? `<div class="mt-5">
-      <h1 class="text-center">Previous Submissions <button class="text-blue-800 text-xs" onclick={localStorage.clear();location.reload()}>Clear History</button></h1>
-    <div
-    class="flex justify-between items-center border rounded p-2 my-2 shadow-sm font-medium">
-    <div>Marks</div>
-    <div>Grade</div>
-    <div>Time</div>
+    let i = 1;
+    let storage2 = JSON.parse(localStorage.getItem("results"));
+    displayResult.innerHTML = `
+    <div class="h-[220px] w-[220px] mx-auto mt-8 flex flex-col justify-center border-2 rounded-tr-[50%] rounded-bl-[50%]">
+      <h3 class="text-xl ${grade.color}">${grade.status}</h3>
+      <h1 class="text-3xl font-bold my-2"> ${totalMark}<span class="text-slate-800">/60</span></h1>
+      <p class="text-sm flex justify-center items-center gap-2">
+        Total Time: <span class="text-xl text-orange-500">${timeTaken.innerText.replace("sec","")}<span class="text-xs">sec</span></span>
+      </p>
     </div>
-    ${storage
-          ?.reverse()
-          ?.map(
-            (item) => `<div
-      class="flex justify-between items-center border rounded p-2 my-2 shadow-sm">
-      <div>${item.marks}/60</div>
-      <div>${item.status}</div>
-      <div>${item.examTime}</div>
-      </div>`
-          )
-          ?.join("")}`
-        : ""
-      }
-  </div>
+    <button onclick="location.reload();" class="bg-green-600 text-white w-full py-2 rounded mt-16">Restart</button>
+    ${localStorage.getItem("results")
+       ? `<div class="mt-5">
+            <h1 class="text-center">Previous Submissions 
+              <button class="text-blue-800 text-xs" onclick={localStorage.clear();location.reload()}>Clear History</button>
+            </h1>
+            <div class="flex justify-between items-center border rounded p-2 my-2 shadow-sm font-medium">
+              <div>Marks</div>
+              <div>Grade</div>
+              <div>Time</div>
+            </div>
+            ${storage2 ?.reverse()?.map(
+                        (item, idex) => 
+                          `<div class="flex justify-between items-center border rounded p-2 my-2 shadow-sm">
+                            <div>${item.marks}/60</div>
+                            <div>${item.status}</div>
+                            <div>${item.examTime}</div>
+                          </div> `
+                        )
+              ?.join("")
+            }
+          </div>`:""}
+
   `;
 
     clearTimeout(x);
   }, 1500);
   window.scrollTo(0, 0);
 });
+
+// const previousResults = ()=>{
+//   let storage = JSON.parse(localStorage.getItem("results"));
+//   console.log(storage);
+//   return storage;
+// }
