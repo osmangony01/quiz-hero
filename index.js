@@ -48,7 +48,8 @@ const loadQuiz = async () => {
   const res = await fetch("./data/quiz.json");
   const data = await res.json();
   console.log(data)
-  displayQuiz(data);
+  quizData = data;
+  displayQuiz(quizData);
 };
 
 // Displaying quiz on quiz page
@@ -75,16 +76,17 @@ const displayQuiz = (data) => {
 };
 
 // EventListener for quiz submit button
-document.querySelector("#submit").addEventlistener("click", () => {
+document.querySelector("#submit").addEventListener("click", () => {
   console.log('submit');
   if (answers.length < 6) {
     return;
   }
   quizTimer(true);
-  answersContainer.innerHTML = `<div class="my-4">
-  <i class="fa-solid fa-fan animate-spin text-2xl text-green-600"></i>
-  <p class="text-xs animate-pulse">Please Wait, We are checking...</p>
-</div>`;
+  answersContainer.innerHTML = `
+    <div class="my-4">
+      <i class="fa-solid fa-fan animate-spin text-2xl text-green-600"></i>
+      <p class="text-xs animate-pulse">Please Wait, We are checking...</p>
+    </div>`;
   let timeTaken = document.querySelector("#count");
   let totalMark = 0;
   let grade = {
