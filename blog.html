@@ -65,51 +65,107 @@
             overflow: hidden;
             transition: max-height 0.2s ease-out;
         }
+        table{
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        table th{
+            width: 25%;
+            text-align: center;
+        }
+        table td{
+            font-weight: 400;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+            vertical-align: top;
+            text-align: justify;
+        }
     </style>
 </head>
 
 <body>
     <section>
-        <h1 class="blog-title"><span style="color:red;">Queston</span> and <span style="color:green;">Answer</span>
+        <h1 class="blog-title"><span style="color:red;">Question</span> and <span style="color:green;">Answer</span>
             section !!</h1>
         <div class="question-panel">
-            <button class="accordion"><b>1. What is DOM and what is the purpose of DOM?</b></button>
+            <button class="accordion"><b>1. Differentiate with map, filter, forEach, and find?</b></button>
             <div class="panel">
-                <p><b>Ans : </b>DOM means Document Object Model. It is a programing interface to modify the element from
-                    the document.The main purposes for developing the DOM is to maintain a standard programing interface
-                    for HTML and XML document.</p>
+                <p><b>Ans:</b></p>
+                <div>
+                    <table>
+                        <tr>
+                            <th>map</th>
+                            <th>filter</th>
+                            <th>forEach</th>
+                            <th>find</th>
+                        </tr>
+                        <tr>
+                            <td>The Array.map() method allows you to iterate over an array and modify its elements using a callback function. The callback function will then be executed on each of the array's elements.</td>
+                            <td>The filter() method creates a shallow copy of a portion of a given array, filtered down to just the elements from the given array that pass the test implemented by the provided function.</td>
+                            <td>The forEach() method calls a function and iterates over the elements of an array.</td>
+                            <td>The find() method is used to get the value of the first element in the array that satisfies the provided condition.</td>
+                        </tr>
+                        <tr>
+                            <td>Return new array with transformed elements</td>
+                            <td>The filter method creates a new array and returns all of the items which pass the condition specified in the callback.</td>
+                            <td>Return value undefined</td>
+                            <td>It returns the array element value if any of the elements in the array satisfy the condition, otherwise it returns undefined.</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <button class="accordion"><b>2. How will you select HTML elements using DOM? Name the DOM methods.</b></button>
+            <button class="accordion"><b>2. Differentiate with LocalStorage, sessionStorage, and cookies? </b></button>
             <div class="panel">
-                <p><b>Ans : </b>Javascript is simply used to modify the content or value of the HTML element on the
-                    page. You will see some of the common ways of selecting the elements on a page. <br><b>Selecting
-                        element by Id -</b> You can select an element based on its unique ID with the getElementById()
-                    method. This is the easiest way to find an HTML element in the DOM tree. <br><b>Selecting Elements
-                        by Class Name - </b> You can use the getElementsByClassName() method to select all the elements
-                    having specific class names. <br><b>Selecting Elements by Tag Name- </b> You can also select HTML
-                    elements by tag name using the getElementsByTagName() method. <br><b>Selecting Elements with CSS
-                        Selectors -</b> You can use the querySelector() and querySelectorAll() method to select elements
-                    that matches the specified CSS selector. <br><b>DOM Methods :</b><br> getElementById() Method <br>
-                    getElementsByClassName() Method <br> getElementsByName() Method <br> getElementsByTagName() Method
-                    <br> querySelector() Method <br>querySelectorAll() Method <br><br>
-                </p>
+               <div>
+                <p><b>Ans:</b></p>
+                <table>
+                    <tr>
+                        <th>LocalStorage</th>
+                        <th>SessionStorage</th>
+                        <th>Cookies</th>
+                    </tr>
+                    <tr>
+                        <td>Local storage is useful for storing data that the user will need to access later, such as offline data.</td>
+                        <td>Session storage is a great way to improve the performance of your web applications.</td>
+                        <td>Cookies are a good choice for storing data that should not be persisted for a long time, such as session IDs.</td>
+                    </tr>
+                    <tr>
+                        <td>The stored data is not deleted when the browser is closed.</td>
+                        <td>The data is stored only for the session and will be deleted when the browser is closed.</td>
+                        <td>The data can be set to expire at a certain time.</td>
+                    </tr>
+                    <tr>
+                        <td>This is especially useful for storing data that you want to persist even if the user closes the browser, such as preferences or settings.</td>
+                        <td>Session storage is useful for storing data that is sensitive, such as login credentials.</td>
+                        <td>Cookies are often used to store data that is not sensitive, such as user preferences</td>
+                    </tr>
+                </table>
+               </div>
+                
             </div>
-            <button class="accordion"><b>3. What is event bubble?</b></button>
+            <button class="accordion"><b>3. What is event loop and how to work?</b></button>
             <div class="panel">
-                <p><b>Ans : </b>Bubbling of events is a method of propagation of events in HTML Dom API when the event
-                    is in the element inside the other element, and both elements registered in that event. It is a
-                    process that begins with an element that activates the event and then bubbles to the elements of the
-                    hierarchy. During the events, the event is first recorded and handled in the inner element and then
-                    propagates to the outer elements. </p>
+                <p><b>Ans:</b> </p>
+                <p>JavaScript has a runtime model based on an event loop, which is responsible for executing the code, collecting and processing events, and executing queued sub-tasks. </p>
+                <p>The Event Loop is an infinite loop that keeps waiting for a queue (sometimes referred to as the Callback Queue or Event Queue) to be filled with tasks. As and when the callback queue gets filled up with a task, the Event Loop kicks in and removes the task based on FIFO (First In First Out) from the Callback Queue. It is then pushed on to the Call Stack which executes the task.</p>
             </div>
 
-            <button class="accordion"><b>4. What is a callback function and why will you use it?</b></button>
+            <button class="accordion"><b>4. How to quizTimer() function work?</b></button>
             <div class="panel">
-                <p><b>Ans : </b>A callback is a function passed as an argument to another function. A callback function
-                    can run after another function has finish. We need them because a lot of operations in JavaScript
-                    are asynchronous, or put a bit more simply they don't actually stop the program from continuing
-                    until they are done like you are probably used to. But instead just run in the background while the
-                    rest of the code continues executing.</p>
+                <p><b>Ans : </b></p>
+                <p>The quizTimer() is a user define function. We can call when we need it</p>
+                <p>Here, when quiz-loaded then the quizTimer() function call. The quizTimer() function take one parameter. Initially, we cannot pass a parameter value, so parameter value undefined. So, Inside quizTimer() function, firstly if condition is checking according to parameter value and whether if condition is true then if-block is working and timer is stop, otherwise timer is running and counting seconds. When we submit the quiz the timer is stop  because we call quizTimer() function with true parameter.</p>
+            </div>
+
+            <button class="accordion"><b>5. How to chooseQuiz() function work?</b></button>
+            <div class="panel">
+                <p><b>Ans : </b></p>
+                <p>The chooseQuiz() is a user defined function. The function take two parameter which is index and given answer. This function basically add the givenAns property of given-answer value and with quiz-data in answers array. Here answers array is like of quiz-data but difference is quiz-data array has no givenAns property whereas answers array has givenAns property.Finally the chooseQuiz() function call displayAnswer() function which show the highlighted answer and which you give quiz answer before.</p>
             </div>
         </div>
 
