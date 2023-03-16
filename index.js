@@ -142,7 +142,6 @@ document.querySelector("#submit").addEventListener("click", () => {
   // Right side bar/ answer section
   let x = setTimeout(() => {
     showAnswers(answers);
-    let i = 1;
     let storage2 = JSON.parse(localStorage.getItem("results"));
     displayResult.innerHTML = `
     <div class="h-[220px] w-[220px] mx-auto mt-8 flex flex-col justify-center border-2 rounded-tr-[50%] rounded-bl-[50%]">
@@ -164,7 +163,7 @@ document.querySelector("#submit").addEventListener("click", () => {
               <div>Time</div>
             </div>
             ${storage2 ?.reverse()?.map(
-                        (item, idex) => 
+                        (item, index) => 
                           `<div class="flex justify-between items-center border rounded p-2 my-2 shadow-sm">
                             <div>${item.marks}/60</div>
                             <div>${item.status}</div>
@@ -174,7 +173,6 @@ document.querySelector("#submit").addEventListener("click", () => {
               ?.join("")
             }
           </div>`:""}
-
   `;
 
     clearTimeout(x);
@@ -182,8 +180,6 @@ document.querySelector("#submit").addEventListener("click", () => {
   window.scrollTo(0, 0);
 });
 
-// const previousResults = ()=>{
-//   let storage = JSON.parse(localStorage.getItem("results"));
-//   console.log(storage);
-//   return storage;
-// }
+document.getElementById('blog-btn').addEventListener('click', function (e){
+  window.location.href = 'blog.html';
+});

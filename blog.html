@@ -1,12 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
+    <style>
+        body {
+            background-color: #beecfc;
+        }
+
+        .blog-title {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .question-panel {
+            width: 70%;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .question {
+            font-size: 20px;
+        }
+
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .accordion:after {
+            content: '\002B';
+            color: #777;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <section>
+        <h1 class="blog-title"><span style="color:red;">Queston</span> and <span style="color:green;">Answer</span>
+            section !!</h1>
+        <div class="question-panel">
+            <button class="accordion"><b>1. What is DOM and what is the purpose of DOM?</b></button>
+            <div class="panel">
+                <p><b>Ans : </b>DOM means Document Object Model. It is a programing interface to modify the element from
+                    the document.The main purposes for developing the DOM is to maintain a standard programing interface
+                    for HTML and XML document.</p>
+            </div>
+            <button class="accordion"><b>2. How will you select HTML elements using DOM? Name the DOM methods.</b></button>
+            <div class="panel">
+                <p><b>Ans : </b>Javascript is simply used to modify the content or value of the HTML element on the
+                    page. You will see some of the common ways of selecting the elements on a page. <br><b>Selecting
+                        element by Id -</b> You can select an element based on its unique ID with the getElementById()
+                    method. This is the easiest way to find an HTML element in the DOM tree. <br><b>Selecting Elements
+                        by Class Name - </b> You can use the getElementsByClassName() method to select all the elements
+                    having specific class names. <br><b>Selecting Elements by Tag Name- </b> You can also select HTML
+                    elements by tag name using the getElementsByTagName() method. <br><b>Selecting Elements with CSS
+                        Selectors -</b> You can use the querySelector() and querySelectorAll() method to select elements
+                    that matches the specified CSS selector. <br><b>DOM Methods :</b><br> getElementById() Method <br>
+                    getElementsByClassName() Method <br> getElementsByName() Method <br> getElementsByTagName() Method
+                    <br> querySelector() Method <br>querySelectorAll() Method <br><br>
+                </p>
+            </div>
+            <button class="accordion"><b>3. What is event bubble?</b></button>
+            <div class="panel">
+                <p><b>Ans : </b>Bubbling of events is a method of propagation of events in HTML Dom API when the event
+                    is in the element inside the other element, and both elements registered in that event. It is a
+                    process that begins with an element that activates the event and then bubbles to the elements of the
+                    hierarchy. During the events, the event is first recorded and handled in the inner element and then
+                    propagates to the outer elements. </p>
+            </div>
+
+            <button class="accordion"><b>4. What is a callback function and why will you use it?</b></button>
+            <div class="panel">
+                <p><b>Ans : </b>A callback is a function passed as an argument to another function. A callback function
+                    can run after another function has finish. We need them because a lot of operations in JavaScript
+                    are asynchronous, or put a bit more simply they don't actually stop the program from continuing
+                    until they are done like you are probably used to. But instead just run in the background while the
+                    rest of the code continues executing.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+
+
+    </section>
+
+
+    <script>
+        let acc = document.getElementsByClassName("accordion");
+        let i;
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                let panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>
